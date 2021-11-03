@@ -22,6 +22,25 @@ export class ProductsController {
         
     }
 
+    @Get('/category/:category')
+    async findByCategory(@Param('category') category: string){
+        const products = await this.productsService.findByCategory(category);
+
+        if(products){
+            return {
+                statusCode: HttpStatus.OK,
+                message: 'Product fetched successfully',
+                products
+            };
+        }
+        return {
+            statusCode: HttpStatus.NOT_FOUND,
+            message: 'Product not fetched',
+          
+        }
+        
+    }
+
     @Get()
       async showAllProducts() {
         const products =  await this.productsService.showAllProducts();

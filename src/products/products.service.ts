@@ -19,6 +19,14 @@ export class ProductsService {
         })
     }
 
+    async findByCategory(category: string) {
+        return await this.ProductRepository.find({
+            where: {
+                category: category,
+            }
+        });
+    }
+
     async showAllProducts() {
         return await this.ProductRepository.find();
       }

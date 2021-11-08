@@ -19,10 +19,11 @@ export class ProductsService {
 
     // (es) This function bring in every product that has a coincidence with the search using Like from TypeOrm
     // the method gets a string and gets compared with the name column from the repository 
-    async findByName(name: string): Promise<ProductsDTO[]> {
-        return await this.ProductRepository.find({
+    async findByName(name: string): Promise<ProductsDTO> {
+        return await this.ProductRepository.findOne({
             where: {
-                name: Like(`%${name}%`),
+                name: name
+                //name: Like(`%${name}%`),
             }
         })
     }

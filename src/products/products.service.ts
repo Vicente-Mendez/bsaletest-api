@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Like } from 'typeorm';
 import { ProductsDTO } from './products.dto';
 import { ProductsEntity } from './products.entity';
 
@@ -14,7 +15,7 @@ export class ProductsService {
     async findByName(name: string): Promise<ProductsDTO> {
         return await this.ProductRepository.findOne({
             where: {
-                name: name,
+                name: Like(`%${name}%`),
             }
         })
     }

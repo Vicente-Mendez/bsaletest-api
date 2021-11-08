@@ -8,18 +8,13 @@ import { CategoriesEntity } from './categories.entity';
 export class CategoriesService {
     constructor(
         @InjectRepository(CategoriesEntity)
+        //(es)Se hace el repository con los valores de CategoriesEntity
+        //(en) Here the repository is created with the values of CategoriesEntity
         private categoryRepository: Repository<CategoriesEntity>,
     ){}
 
-    async findById(id: number): Promise<CategoriesDTO> {
-        return await this.categoryRepository.findOne({
-            where: {
-                id: id,
-            }
-        })
-    }
-
-
+    // (es) Trae todas las categorias sin condición
+    // (en) Brings in every category without any requirement
     async allCategories() {
         return await this.categoryRepository.find();
       }

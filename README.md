@@ -5,6 +5,7 @@ Para usar tener instalado Node.js y @nestjs/cli
 Abrir una terminal y usar el comando: npm run start
 
 -- Endpoints -- 
+
 http://localhost:3000/products   --Para traer a todos los productos de la base de datos 
 
 http://localhost:3000/products/:name -- Para traer los productos los cuales :name, y la columna name en la base de datos coincidan
